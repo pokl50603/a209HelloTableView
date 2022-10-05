@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     @IBAction func addNewName(_ sender: Any) {
         var theName = name.text ?? ""
         var thePhone = phone.text ?? ""
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
         if thePhone.count < 10{
             showAlert(message: "電話至少十碼")
             return
-        }
+      }
         
         let content:[String:String] = ["name":theName,"phone":thePhone]
         
@@ -52,5 +53,5 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "我知道了", style: .default))
         self.present(alert, animated: true)
     }
-
+    
 }

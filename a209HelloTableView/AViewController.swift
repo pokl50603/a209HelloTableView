@@ -24,6 +24,7 @@ class AViewController: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewWillAppear(animated)
         let defult = UserDefaults.standard
         addbook = defult.value(forKey: "addressBook") as? Array<[String:String]> ?? []
+        oneTableView.reloadData()
     }
     
     //MARK:TableView Dalegate and Data Source
@@ -32,13 +33,14 @@ class AViewController: UIViewController, UITableViewDelegate, UITableViewDataSou
         return 1
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return addbook.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "thereuseid") as! MyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "thereuseid")
+            as! MyTableViewCell
+        
         cell.name.text = addbook[indexPath.row]["name"]
         cell.phone.text = addbook[indexPath.row]["phone"]
         
